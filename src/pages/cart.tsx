@@ -2,17 +2,10 @@ import { ChangeEvent } from 'react'
 import { useAtom } from 'jotai'
 import { cartAtom } from '../store/cart'
 import { useRouter } from 'next/router'
-
-interface CartItem {
-    id: number
-    name: string
-    price: number
-    quantity: number
-    image: string // Added image property
-}
+import { CartItem } from '../types'
 
 const CartPage = () => {
-    const [cart, setCart] = useAtom<CartItem[]>(cartAtom)
+    const [cart, setCart] = useAtom(cartAtom)
     const router = useRouter()
 
     const handleQuantityChange = (index: number, quantity: number) => {
@@ -124,7 +117,7 @@ const CartPage = () => {
                             <button
                                 onClick={handleCheckout}
                                 disabled={cart.length === 0}
-                                className="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-950 w-full"
+                                className="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-600 w-full"
                             >
                                 Proceed to Checkout
                             </button>
